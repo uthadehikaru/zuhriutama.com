@@ -2,10 +2,14 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\UserResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationBuilder;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
+use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -51,6 +55,20 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
+                return $builder->items([
+                    NavigationItem::make('Dashboard')
+                    ->icon('heroicon-o-home')
+                    ->isActiveWhen(fn (): bool => request()->routeIs('filament.admin.pages.dashboard'))
+                    ->url(fn (): string => Dashboard::getUrl()),
+                    ...UserResource::getNavigationItems(),
+                    NavigationItem::make('Logs')
+                        ->icon('heroicon-o-adjustments-horizontal')
+                        ->isActiveWhen(fn (): bool => request()->is('logs'))
+                        ->url('logs'),
+                ]);
+            })
+            ;
     }
 }
