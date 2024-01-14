@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@laravel.test',
-            'password' => Hash::make('secret'),
+            'name' => 'Zuhri Utama',
+            'email' => 'me@zuhriutama.com',
+            'password' => Hash::make('Zuhri100%'),
         ]);
     }
 }
