@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::get('/', App\Http\Controllers\Welcome::class)->name('home');
+Route::resource('/post', App\Http\Controllers\PostController::class)->only(['index','show']);
 
 Route::redirect('/login', 'admin/login')->name('login');
 
