@@ -8,13 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
     
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
-    protected $casts = [
-        'published_at' => 'datetime',
-    ];
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true);
+    }
 }

@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $data['latest_posts'] = Post::latest()->paginate(9);
+        $data['latest_posts'] = Post::latest()->published()->paginate(9);
         return view('post.index', $data);
     }
     
