@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', App\Http\Controllers\Welcome::class)->name('home');
+Route::get('/privacy', function(){
+    return view('privacy');
+})->name('privacy');
 Route::resource('/post', App\Http\Controllers\PostController::class)->only(['index','show']);
 
 Route::redirect('/login', 'admin/login')->name('login');
