@@ -5,6 +5,7 @@
 /public/storage
 /storage/*.key
 /vendor
+Envoy.blade.php
 .env
 .env.backup
 .env.production

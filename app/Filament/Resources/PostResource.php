@@ -27,7 +27,7 @@ class PostResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255)
-                    ->live()
+                    ->live(true)
                     ->afterStateUpdated(fn ($set, $state) => $set('slug', Str::slug($state))),
                 Forms\Components\TextInput::make('slug')
                     ->required()
