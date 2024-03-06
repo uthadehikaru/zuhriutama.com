@@ -32,7 +32,7 @@ class PostResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextArea::make('description')
+                Forms\Components\Textarea::make('description')
                     ->maxLength(65535)
                     ->columnSpanFull(),
                 Forms\Components\MarkdownEditor::make('content')
