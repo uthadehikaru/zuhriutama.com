@@ -1,7 +1,7 @@
 <div class="p-4 md:w-1/3">
     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-        <a  href="{{ route('post.show', $post->slug) }}"><img class="lg:h-48 md:h-36 w-full object-cover object-center"
-            src="{{ $post->thumbnail? asset('storage/'.$post->thumbnail):asset('assets/placeholder.jpg') }}" alt="{{ $post->title }}"></a>
+        <a  href="{{ route('post.show', $post->slug) }}"><img class="lg:h-48 md:h-36 w-full object-contain object-center"
+            src="{{ $post->thumbnail? asset('storage/'.$post->thumbnail):asset('assets/placeholder-zuhriutama.png') }}" alt="{{ $post->title }}"></a>
         <div class="p-6">
             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                 {{ $post->published_at?->format('d M Y H:i') }}</h2>
