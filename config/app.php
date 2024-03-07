@@ -186,4 +186,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'analytic_id' => env('ANALYTIC_ID'),
+
 ];

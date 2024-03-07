@@ -12,6 +12,8 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo zuhri.svg') }}">
 
+    <x-analytic />
+
     <!-- Styles -->
     @production
     @vite('resources/css/app.css')
