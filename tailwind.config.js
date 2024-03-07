@@ -6,6 +6,7 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
+    darkMode : "class",
     extend: {},
   },
   plugins: [],

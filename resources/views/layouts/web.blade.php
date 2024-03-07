@@ -13,6 +13,9 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo zuhri.svg') }}">
 
     <!-- Styles -->
+    @production
+    @vite('resources/css/app.css')
+    @else
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,6 +26,7 @@
             }
         }
     </script>
+    @endproduction
     <style type="text/tailwindcss">
         @layer utilities {
           .parsedown h1 {
