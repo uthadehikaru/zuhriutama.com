@@ -16,8 +16,13 @@ test('authenticated user can access the dashboard', function () {
 });
  
 test('non authenticated user can not access the dashboard', function () {
-    $user = User::factory()->create();
- 
     $this->get('/admin')
         ->assertRedirect('admin/login');
+});
+ 
+test('non admin user can not access the dashboard', function () {
+    $user = User::factory()->create(['level'=>2]);
+    
+    $this->actingAs($user)->get('/admin')
+        ->assertStatus(403);
 });

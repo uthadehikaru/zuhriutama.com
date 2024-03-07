@@ -14,6 +14,15 @@
 
     <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                }
+            }
+        }
+    </script>
     <style type="text/tailwindcss">
         @layer utilities {
           .parsedown h1 {
@@ -120,6 +129,7 @@
             </span>
         </div>
     </footer>
+    @stack('scripts')
 </body>
 
 </html>

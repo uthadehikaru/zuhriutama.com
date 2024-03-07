@@ -5,16 +5,14 @@ namespace Database\Seeders;
 use App\Models\Comment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Post;
 
-class PostSeeder extends Seeder
+class CommentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        if(!app()->isProduction())
-            Post::factory(10)->has(Comment::factory(5))->create();
+        Comment::factory()->create();
     }
 }

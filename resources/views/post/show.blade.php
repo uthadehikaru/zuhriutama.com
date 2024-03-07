@@ -13,6 +13,11 @@
         <div class="parsedown">
         {!! str($post->content)->markdown() !!}
         </div>
+        <div class="mb-4">
+            <span class="italic text-xs">{{ $post->published_at?->format('d M Y H:i') }}</span>
+        </div>
+        <hr />
+        <livewire:comment-form :post_id="$post->id" />
     </div>
 </section>
 <!-- end blog -->

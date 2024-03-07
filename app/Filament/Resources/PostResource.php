@@ -64,11 +64,14 @@ class PostResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('is_published')
-                    ->boolean(),
+                Tables\Columns\ToggleColumn::make('is_published'),
+                Tables\Columns\TextColumn::make('comments_count')
+                    ->label('Comments')
+                    ->counts('comments'),
                 Tables\Columns\TextColumn::make('published_at')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
