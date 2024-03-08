@@ -24,6 +24,11 @@ class Post extends Model
         return $query->where('is_published', true);
     }
 
+    public function scopeDraft($query)
+    {
+        return $query->where('is_published', false);
+    }
+
     public function comments():HasMany
     {
         return $this->hasMany(Comment::class);

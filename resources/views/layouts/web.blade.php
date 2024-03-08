@@ -62,10 +62,14 @@
 
             <!-- nav - start -->
             <nav class="hidden gap-12 lg:flex">
-                <a href="{{ url('/') }}" class="text-lg font-semibold text-indigo-500">Home</a>
-                <a href="{{ route('post.index') }}"
-                    class="text-lg font-semibold text-gray-600 transition duration-100 
-                    hover:text-indigo-500 active:text-indigo-700">Artikel</a>
+                <a href="{{ url('/') }}" @class(["text-lg font-semibold",
+                "text-gray-500 hover:text-indigo-500" => !Request::is('/*'),
+                "text-indigo-500" => Request::is('/*'),
+                ])>Home</a>
+                <a href="{{ route('post.index') }}" @class(["text-lg font-semibold",
+                "text-gray-500 hover:text-indigo-500" => !Request::is('post*'),
+                "text-indigo-500" => Request::is('post*'),
+                ])>Artikel</a>
             </nav>
             <!-- nav - end -->
 
