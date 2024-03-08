@@ -28,7 +28,6 @@
             }
         }
     </script>
-    @endproduction
     <style type="text/tailwindcss">
         @layer utilities {
           .parsedown h1 {
@@ -44,7 +43,8 @@
             @apply my-2;
           }
         }
-      </style>
+    </style>
+    @endproduction
 </head>
 
 <body>

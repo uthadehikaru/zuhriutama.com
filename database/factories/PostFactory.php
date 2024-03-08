@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'title' => $title,
             'slug' => str($title)->slug(),
             'description' => fake()->paragraph(),
-            'content' => fake()->text(),
+            'content' => "<p>".(collect(fake()->paragraphs(5))->join("</p><p>"))."</p>",
             'is_published' => true,
             'published_at' => fake()->dateTime(),
             'thumbnail' => null,

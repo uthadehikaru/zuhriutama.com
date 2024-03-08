@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+    .parsedown h1 {
+        @apply text-4xl font-bold;
+    }
+    .parsedown h2 {
+        @apply text-2xl font-bold;
+    }
+    .parsedown h3 {
+        @apply text-xl font-bold;
+    }
+    .parsedown h4, h5 {
+        @apply text-lg font-bold;
+    }
+    .parsedown a {
+        @apply text-blue-500;
+    }
+    .parsedown p {
+        @apply my-2;
+    }
+}
