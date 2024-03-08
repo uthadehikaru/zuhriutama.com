@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Zuhri Utama',
             'password' => Hash::make('Zuhri100%'),
             'level' => 1,
+            'email_verified_at' => now(),
         ]);
 
         $this->call([

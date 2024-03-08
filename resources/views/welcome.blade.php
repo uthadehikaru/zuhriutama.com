@@ -7,7 +7,7 @@
         <section class="flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row">
             <!-- image - start -->
             <div class="h-auto overflow-hidden rounded-lg">
-                <img src="{{ asset('assets/ahmad-zuhri-utama.jpg') }}" loading="lazy"
+                <img src="{{ asset('assets/zuhri cartoon.webp') }}" loading="lazy"
                     alt="Zuhri Utama. A" class="h-full w-full object-contain object-center" />
             </div>
             <!-- image - end -->
