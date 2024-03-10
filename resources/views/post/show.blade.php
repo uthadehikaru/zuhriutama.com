@@ -9,6 +9,11 @@
         <div class="flex flex-col text-center w-full mb-12">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{{ $post->title }}</h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">{{ $post->description }}</p>
+            <div class="flex flex-row justify-center mt-2 gap-2">
+                @foreach ($post->tags as $tag)
+                    <span class="p-1 border rounded bg-indigo-500 text-white text-center text-xs">{{ $tag->name }}</span>
+                @endforeach
+            </div>
         </div>
         <div class="parsedown">
         {!! str($post->content)->markdown() !!}

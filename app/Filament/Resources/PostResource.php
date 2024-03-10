@@ -42,8 +42,9 @@ class PostResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('thumbnail')
                     ->disk('public')
-                    ->directory('post')
-                    ->columnSpanFull(),
+                    ->directory('post'),
+                Forms\Components\SpatieTagsInput::make('tags')
+                ->type('categories'),
                 Forms\Components\Toggle::make('is_published')
                     ->required(),
                 Forms\Components\DateTimePicker::make('published_at')
@@ -66,6 +67,8 @@ class PostResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('is_published'),
+                Tables\Columns\SpatieTagsColumn::make('tags')
+                ->type('categories'),
                 Tables\Columns\TextColumn::make('comments_count')
                     ->label('Comments')
                     ->counts('comments'),
@@ -78,12 +81,12 @@ class PostResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
                 Action::make('view')
                     ->url(fn (Post $record): string => route('post.show', $record->slug))
                     ->icon('heroicon-o-eye')
                     ->color('info')
-                    ->openUrlInNewTab()
+                    ->openUrlInNewTab(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

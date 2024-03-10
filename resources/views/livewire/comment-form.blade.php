@@ -16,7 +16,7 @@
         <form wire:submit="create" class="mt-4 p-2 border rounded">
             <h3 class="py-2 font-bold">Kirim Komentar</h3>
             {{ $this->form }}
-            <button type="submit" class="mt-2 p-2 border rounded bg-blue-500 text-white">
+            <button type="submit" class="mt-2 p-2 border rounded bg-indigo-500 text-white">
                 Submit
             </button>
         </form>
