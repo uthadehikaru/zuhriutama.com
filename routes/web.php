@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -16,12 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', App\Http\Controllers\Welcome::class)->name('home');
+Route::resource('login', LoginController::class)->only(['index','store']);
 Route::get('/privacy', function(){
     return view('privacy');
 })->name('privacy');
 Route::resource('/post', App\Http\Controllers\PostController::class)->only(['index','show']);
 
-Route::redirect('/login', 'admin/login')->name('login');
+Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
 
 Route::get('lara-logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
