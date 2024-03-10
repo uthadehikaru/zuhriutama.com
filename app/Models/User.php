@@ -36,6 +36,11 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'password' => 'hashed',
     ];
 
+    public function getIsAdminAttribute(): bool
+    {
+        return $this->level==1;
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->level==1;
