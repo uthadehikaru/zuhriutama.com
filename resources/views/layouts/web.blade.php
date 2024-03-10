@@ -15,36 +15,7 @@
     <x-analytic />
 
     <!-- Styles -->
-    @production
     @vite('resources/css/app.css')
-    @else
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                }
-            }
-        }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-          .parsedown h1 {
-            @apply text-4xl;
-          }
-          .parsedown h2 {
-            @apply text-2xl;
-          }
-          .parsedown a {
-            @apply text-blue-500;
-          }
-          .parsedown p {
-            @apply my-2;
-          }
-        }
-    </style>
-    @endproduction
 </head>
 
 <body>

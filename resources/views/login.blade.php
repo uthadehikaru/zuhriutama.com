@@ -36,7 +36,8 @@
                   <button type="submit" class="w-full text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
                   >Sign in</button>
                   @if(config('services.google.client_id'))
-                  <button type="button" onclick="{{ route('google.redirect') }}" class="w-full text-indigo-600 hover:text-indigo-700 border rounded border-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
+                  <button type="button" onclick="window.location.href = '{{ route("google.redirect") }}'" 
+                  class="w-full dark:text-white text-indigo-600 hover:text-indigo-700 border rounded border-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
                   >or Sign in Using Google</button>
                   @endif
               </form>
