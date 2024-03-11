@@ -24,8 +24,6 @@
             <a href="{{ route('filament.admin.resources.posts.edit', $post) }}" class="italic text-xs text-yellow-500">edit</a>
             @endif
         </div>
-        <hr />
-        <livewire:comment-form :post_id="$post->id" />
     </div>
 </section>
 <!-- end blog -->
