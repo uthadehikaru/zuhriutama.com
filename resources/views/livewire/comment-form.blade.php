@@ -15,6 +15,9 @@
         {{ $comments->links() }}
         <form wire:submit="create" class="mt-4 p-2 border rounded">
             <h3 class="py-2 font-bold">Kirim Komentar</h3>
+            @if($message)
+            <p class="text-green-500">{{ $message }}</p>
+            @endif
             {{ $this->form }}
             <button type="submit" class="mt-2 p-2 border rounded bg-indigo-500 text-white">
                 Submit

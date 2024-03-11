@@ -14,7 +14,11 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        if(!app()->isProduction())
-            Post::factory(10)->has(Comment::factory(5))->create();
+        if(!app()->isProduction()){
+            $tags = fake()->words(5);
+            $posts = Post::factory(10)->has(Comment::factory(5))->create();
+            foreach($posts as $post)
+                $post->attachTags(fake()->randomElements($tags, 2));
+        }
     }
 }

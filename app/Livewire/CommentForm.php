@@ -19,6 +19,8 @@ class CommentForm extends Component implements HasForms
 
     public $post_id;
 
+    public $message;
+
     public ?array $data = [];
     
     public function mount(): void
@@ -31,11 +33,14 @@ class CommentForm extends Component implements HasForms
         return $form
             ->schema([
                 TextInput::make('name')
+                    ->placeholder('Nama anda')
                     ->required(),
                 TextInput::make('email')
+                ->placeholder('Email anda yang aktif')
                     ->email()
                     ->required(),
                 Textarea::make('message')
+                    ->placeholder('komentar anda')
                     ->required(),
             ])
             ->statePath('data');
@@ -43,7 +48,11 @@ class CommentForm extends Component implements HasForms
     
     public function create(): void
     {
-        dd($this->form->getState());
+        $data = $this->form->getState();
+        $data['post_id'] = $this->post_id;
+        Comment::create($data);
+        $this->message = "Komentar anda telah tersimpan";
+        $this->form->fill();
     }
 
     public function render()

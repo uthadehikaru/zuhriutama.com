@@ -14,6 +14,8 @@
 
     <x-analytic />
 
+    @stack('styles')
+
     <!-- Styles -->
     @vite('resources/css/app.css')
 </head>
