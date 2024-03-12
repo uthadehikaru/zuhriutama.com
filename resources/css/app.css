@@ -14,10 +14,28 @@
     .parsedown h4, h5 {
         @apply text-lg font-bold;
     }
+    .parsedown h6 {
+        @apply font-bold;
+    }
     .parsedown a {
         @apply text-blue-500;
     }
     .parsedown p {
         @apply my-2;
+    }
+    .parsedown ul {
+        @apply list-disc;
+    }
+    .parsedown ol {
+        @apply list-decimal;
+    }
+    .parsedown table {
+        @apply border border-gray-800;
+    }
+    .parsedown th {
+        @apply border border-gray-800;
+    }
+    .parsedown td {
+        @apply border border-gray-800;
     }
 }

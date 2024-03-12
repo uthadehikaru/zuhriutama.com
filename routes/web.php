@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', App\Http\Controllers\Welcome::class)->name('home');
+Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::resource('login', LoginController::class)->only(['index','store']);
 Route::get('/privacy', function(){
     return view('privacy');
