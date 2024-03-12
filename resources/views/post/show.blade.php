@@ -11,7 +11,7 @@
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">{{ $post->description }}</p>
             <div class="flex flex-row justify-center mt-2 gap-2">
                 @foreach ($post->tags as $tag)
-                    <span class="p-1 border rounded bg-indigo-500 text-white text-center text-xs">{{ $tag->name }}</span>
+                    <a href="{{ route('tags.show', $tag->slug) }}" class="p-1 border rounded bg-indigo-500 text-white text-center text-xs">{{ $tag->name }}</a>
                 @endforeach
             </div>
         </div>

@@ -24,10 +24,10 @@
         @apply my-2;
     }
     .parsedown ul {
-        @apply list-disc;
+        @apply ml-4 list-disc;
     }
     .parsedown ol {
-        @apply list-decimal;
+        @apply ml-4 list-decimal;
     }
     .parsedown table {
         @apply border border-gray-800;

@@ -24,5 +24,9 @@ test('guest can not see unpublished post', function () {
 });
 
 test('admin can see edit link on post detail', function () {
-    //
-})->todo();
+    $this->actingAs(User::factory()->create());
+    $post = Post::factory()->create();
+    $this->get(route('post.show', $post->slug))
+    ->assertOk()
+    ->assertSee('edit');
+});

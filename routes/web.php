@@ -18,11 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Http\Controllers\Welcome::class)->name('home');
 Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::resource('login', LoginController::class)->only(['index','store']);
+Route::post('login', [LoginController::class, 'store']);
 Route::get('/privacy', function(){
     return view('privacy');
 })->name('privacy');
 Route::resource('/post', App\Http\Controllers\PostController::class)->only(['index','show']);
+Route::resource('/tags', App\Http\Controllers\TagController::class)->only(['show']);
 
 Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
