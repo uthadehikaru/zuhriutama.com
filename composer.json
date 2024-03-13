@@ -62,6 +62,10 @@
         ],
         "deploy": [
             "./vendor/bin/envoy run deploy"
+        ],
+        "test": [
+            "./vendor/bin/phpstan analyse",
+            "@php artisan test --parallel"
         ]
     },
     "extra": {
