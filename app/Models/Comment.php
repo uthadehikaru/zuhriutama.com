@@ -15,12 +15,12 @@ class Comment extends Model
         return $query->where('is_published', true);
     }
 
-    public function post():BelongsTo
+    public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
     }
 
-    public function parent():BelongsTo
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(Comment::class, 'parent_id');
     }

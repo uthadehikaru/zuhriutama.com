@@ -15,7 +15,7 @@ class Post extends Model
     protected $casts = [
         'published_at' => 'datetime',
     ];
-    
+
     public function getRouteKeyName()
     {
         return 'slug';
@@ -31,7 +31,7 @@ class Post extends Model
         return $query->where('is_published', false);
     }
 
-    public function comments():HasMany
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
     }

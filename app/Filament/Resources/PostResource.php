@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
-use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,8 +10,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 class PostResource extends Resource
@@ -44,7 +41,7 @@ class PostResource extends Resource
                     ->disk('public')
                     ->directory('post'),
                 Forms\Components\SpatieTagsInput::make('tags')
-                ->type('categories'),
+                    ->type('categories'),
                 Forms\Components\Toggle::make('is_published')
                     ->required(),
                 Forms\Components\DateTimePicker::make('published_at')
@@ -68,7 +65,7 @@ class PostResource extends Resource
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('is_published'),
                 Tables\Columns\SpatieTagsColumn::make('tags')
-                ->type('categories'),
+                    ->type('categories'),
                 Tables\Columns\TextColumn::make('comments_count')
                     ->label('Comments')
                     ->counts('comments'),

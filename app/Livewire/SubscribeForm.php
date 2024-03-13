@@ -11,21 +11,22 @@ use Livewire\Component;
 
 class SubscribeForm extends Component
 {
-
     public $message;
+
     public $name;
+
     public $email;
 
     public function mount()
     {
-        if(request()->get('verified')){
-            $this->message = "Email anda telah terverifikasi, kami akan mengirimkan notifikasi via email untuk artikel terbaru kami";
+        if (request()->get('verified')) {
+            $this->message = 'Email anda telah terverifikasi, kami akan mengirimkan notifikasi via email untuk artikel terbaru kami';
         }
     }
 
     public function submit()
     {
-        $validated = $this->validate([ 
+        $validated = $this->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
         ]);
@@ -38,9 +39,9 @@ class SubscribeForm extends Component
         ]);
         event(new Registered($user));
         Auth::login($user);
-        $this->message = "data anda telah tersimpan. silahkan cek email anda untuk verifikasi.";
-        $this->name = "";
-        $this->email = "";
+        $this->message = 'data anda telah tersimpan. silahkan cek email anda untuk verifikasi.';
+        $this->name = '';
+        $this->email = '';
     }
 
     public function render()

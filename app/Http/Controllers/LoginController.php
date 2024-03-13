@@ -13,8 +13,9 @@ class LoginController extends Controller
      */
     public function index()
     {
-        if(Auth::check())
+        if (Auth::check()) {
             return redirect(RouteServiceProvider::HOME);
+        }
 
         return view('login');
     }
@@ -24,11 +25,12 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::attempt($request->only(['email','password']))){
+        if (Auth::attempt($request->only(['email', 'password']))) {
             $request->session()->regenerate();
+
             return redirect(RouteServiceProvider::HOME);
         }
 
-        return back()->withInput()->with('error','Invalid Credentials');
+        return back()->withInput()->with('error', 'Invalid Credentials');
     }
 }

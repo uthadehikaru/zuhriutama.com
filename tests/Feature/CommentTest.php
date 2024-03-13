@@ -15,8 +15,8 @@ test('admin can list comments', function () {
 test('guest can see comments', function () {
     $post = Post::factory()->has(Comment::factory(5))->create();
     $this->get(route('post.show', $post->slug))
-    ->assertOk()
-    ->assertSeeInOrder($post->comments()->published()->pluck('name')->toArray());
+        ->assertOk()
+        ->assertSeeInOrder($post->comments()->published()->pluck('name')->toArray());
 });
 
 test('guest can sent comment', function () {
@@ -27,10 +27,10 @@ test('guest can sent comment', function () {
         'message' => fake()->sentence(),
     ];
 
-    Livewire::test('comment-form', ['post_id'=>$post->id])
-    ->assertSee('Kirim Komentar')
-    ->fillForm($comment)
-    ->call('create');
+    Livewire::test('comment-form', ['post_id' => $post->id])
+        ->assertSee('Kirim Komentar')
+        ->fillForm($comment)
+        ->call('create');
 
     $this->assertDatabaseCount('comments', 1);
     $this->assertDatabaseHas('comments', $comment);

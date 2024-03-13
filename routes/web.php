@@ -19,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', App\Http\Controllers\Welcome::class)->name('home');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'store']);
-Route::get('/privacy', function(){
+Route::get('/privacy', function () {
     return view('privacy');
 })->name('privacy');
-Route::resource('/post', App\Http\Controllers\PostController::class)->only(['index','show']);
+Route::resource('/post', App\Http\Controllers\PostController::class)->only(['index', 'show']);
 Route::resource('/tags', App\Http\Controllers\TagController::class)->only(['show']);
 
 Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
@@ -32,13 +32,14 @@ Route::get('lara-logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::clas
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
- 
+
     return redirect()->route('home', ['verified' => true])->withFragment('subcription');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::middleware('auth')->group(function(){
-    Route::get('logout', function() {
+Route::middleware('auth')->group(function () {
+    Route::get('logout', function () {
         Auth::logout();
+
         return redirect()->route('home');
     })->name('logout');
 });

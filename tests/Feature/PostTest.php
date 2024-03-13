@@ -13,27 +13,27 @@ test('admin can list posts', function () {
 test('guest can see post detail', function () {
     $post = Post::factory()->create();
     $this->get(route('post.show', $post->slug))
-    ->assertOk()
-    ->assertSeeInOrder([$post->title, $post->description]);
+        ->assertOk()
+        ->assertSeeInOrder([$post->title, $post->description]);
 });
 
 test('guest can not see unpublished post', function () {
-    $post = Post::factory()->create(['is_published'=>false]);
+    $post = Post::factory()->create(['is_published' => false]);
     $this->get(route('post.show', $post->slug))
-    ->assertStatus(403);
+        ->assertStatus(403);
 });
 
 test('admin can see edit link on post detail', function () {
     $this->actingAs(User::factory()->create());
     $post = Post::factory()->create();
     $this->get(route('post.show', $post->slug))
-    ->assertOk()
-    ->assertSee('edit');
+        ->assertOk()
+        ->assertSee('edit');
 });
 
 test('there is meta tag on post detail', function () {
     $post = Post::factory()->create();
     $this->get(route('post.show', $post->slug))
-    ->assertOk()
-    ->assertSeeInOrder(['og:type','og:title','og:description','og:url','og:image']);
+        ->assertOk()
+        ->assertSeeInOrder(['og:type', 'og:title', 'og:description', 'og:url', 'og:image']);
 });

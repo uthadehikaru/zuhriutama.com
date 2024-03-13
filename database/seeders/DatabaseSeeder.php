@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::firstOrCreate([
             'email' => 'me@zuhriutama.com',
-        ],[
+        ], [
             'name' => 'Zuhri Utama',
             'password' => Hash::make('Zuhri100%'),
             'level' => 1,

@@ -38,11 +38,11 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 
     public function getIsAdminAttribute(): bool
     {
-        return $this->level==1;
+        return $this->level == 1;
     }
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->level==1;
+        return $this->level == 1;
     }
 }

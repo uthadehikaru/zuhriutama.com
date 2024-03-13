@@ -3,16 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CommentResource\Pages;
-use App\Filament\Resources\CommentResource\RelationManagers;
 use App\Models\Comment;
-use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CommentResource extends Resource
 {
@@ -35,7 +31,7 @@ class CommentResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Select::make('parent_id')
-                ->relationship(name: 'parent', titleAttribute: 'name'),
+                    ->relationship(name: 'parent', titleAttribute: 'name'),
                 Forms\Components\Textarea::make('message')
                     ->required()
                     ->columnSpanFull(),

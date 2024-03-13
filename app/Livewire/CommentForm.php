@@ -16,14 +16,14 @@ use Livewire\WithPagination;
  */
 class CommentForm extends Component implements HasForms
 {
-    use WithPagination, InteractsWithForms;
+    use InteractsWithForms, WithPagination;
 
     public $post_id;
 
     public $message;
 
     public ?array $data = [];
-    
+
     public function mount(): void
     {
         $this->form->fill();
@@ -37,7 +37,7 @@ class CommentForm extends Component implements HasForms
                     ->placeholder('Nama anda')
                     ->required(),
                 TextInput::make('email')
-                ->placeholder('Email anda yang aktif')
+                    ->placeholder('Email anda yang aktif')
                     ->email()
                     ->required(),
                 Textarea::make('message')
@@ -46,20 +46,21 @@ class CommentForm extends Component implements HasForms
             ])
             ->statePath('data');
     }
-    
+
     public function create(): void
     {
         $data = $this->form->getState();
         $data['post_id'] = $this->post_id;
         Comment::create($data);
-        $this->message = "Komentar anda telah tersimpan";
+        $this->message = 'Komentar anda telah tersimpan';
         $this->form->fill();
     }
 
     public function render()
     {
-        $data['comments'] = Comment::published()->latest()->where('post_id',$this->post_id)
+        $data['comments'] = Comment::published()->latest()->where('post_id', $this->post_id)
             ->whereNull('parent_id')->paginate();
+
         return view('livewire.comment-form', $data);
     }
 }

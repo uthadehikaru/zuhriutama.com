@@ -17,11 +17,12 @@ class PostFactory extends Factory
     public function definition(): array
     {
         $title = fake()->sentence(3);
+
         return [
             'title' => $title,
             'slug' => str($title)->slug(),
             'description' => fake()->paragraph(),
-            'content' => "# Heading 1
+            'content' => '# Heading 1
 ## Heading 2
 ### Heading 3
 #### Heading 4
@@ -58,7 +59,7 @@ Horizontal Rules
 | Row 2    | Data     |
 
 - [x] Completed task
-- [ ] Incomplete task",
+- [ ] Incomplete task',
             'is_published' => true,
             'published_at' => fake()->dateTime(),
             'thumbnail' => null,
