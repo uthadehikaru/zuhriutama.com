@@ -1,4 +1,11 @@
 @extends('layouts.web')
+@push('styles')
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ $post->title }}" />
+<meta property="og:description" content="{{ $post->description }}" />
+<meta property="og:url" content="{{ route('post.show', $post->slug) }}" />
+<meta property="og:image" content="{{ $post->thumbnail? asset('storage/'.$post->thumbnail):asset('assets/placeholder-zuhriutama.png') }}" />
+@endpush
 @section('title')
 - {{ $post->title }}
 @endsection

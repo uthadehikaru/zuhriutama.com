@@ -30,3 +30,10 @@ test('admin can see edit link on post detail', function () {
     ->assertOk()
     ->assertSee('edit');
 });
+
+test('there is meta tag on post detail', function () {
+    $post = Post::factory()->create();
+    $this->get(route('post.show', $post->slug))
+    ->assertOk()
+    ->assertSeeInOrder(['og:type','og:title','og:description','og:url','og:image']);
+});
