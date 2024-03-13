@@ -16,6 +16,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/socialite": "^5.12",
+        "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.8",
         "rap2hpoutre/laravel-log-viewer": "^2.3"
     },
@@ -64,6 +65,7 @@
             "./vendor/bin/envoy run deploy"
         ],
         "test": [
+            "./vendor/bin/pint",
             "./vendor/bin/phpstan analyse",
             "@php artisan test --parallel"
         ]
