@@ -3,8 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Comment;
-use App\Models\Post;
-use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -13,6 +11,9 @@ use Filament\Forms\Form;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+/**
+ * @property Form $form
+ */
 class CommentForm extends Component implements HasForms
 {
     use WithPagination, InteractsWithForms;
