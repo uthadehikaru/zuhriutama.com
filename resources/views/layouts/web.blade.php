@@ -85,7 +85,7 @@
                 <span class="ml-3 text-xl">{{ config('app.name' ) }}</span>
             </a>
             <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">©
-                {{ date('Y') }} Copyright Reserved
+                {{ date('Y') }} Copyright Reserved | <a href="https://storyset.com" rel="nofollow">illustrations by Storyset</a>
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
                 <a href="https://x.com/zuhriutama" target="_blank" class="ml-3 text-gray-500">
