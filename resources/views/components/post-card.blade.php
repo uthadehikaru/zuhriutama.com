@@ -5,7 +5,7 @@
         <div class="p-6">
             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                 {{ $post->published_at?->format('d M Y H:i') }}</h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{ $post->title }}</h1>
+            <a  href="{{ route('post.show', $post->slug) }}"><h1 class="title-font text-lg font-medium text-indigo-500 mb-3">{{ $post->title }}</h1></a>
             <p class="leading-relaxed mb-3">{{ $post->description }}</p>
             <div class="flex items-center flex-wrap ">
                 <a href="{{ route('post.show', $post->slug) }}" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Selengkapnya

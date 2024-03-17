@@ -26,6 +26,9 @@ class GoogleLoginController extends Controller
 
         event(new Registered($user));
         Auth::login($user);
+        
+        if(Auth::user()->is_admin)
+            return redirect()->route('filament.admin.pages.dashboard');
 
         return redirect(RouteServiceProvider::HOME);
     }
