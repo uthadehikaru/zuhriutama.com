@@ -17,26 +17,26 @@ it('can render admin login', function () {
 
 test('user can login', function () {
     $pass = Hash::make(fake()->word());
-    $user = User::factory()->create(['level'=>2, 'password'=>$pass]);
+    $user = User::factory()->create(['level' => 2, 'password' => $pass]);
     $this->post('/login', [
         'email' => $user->email,
         'password' => $pass,
     ])
-    ->assertRedirect('/');
+        ->assertRedirect('/');
 });
 
 test('admin login on frontend redirect to dashboard', function () {
     $pass = fake()->word();
-    $user = User::factory()->create(['level'=>1, 'password'=>Hash::make($pass)]);
+    $user = User::factory()->create(['level' => 1, 'password' => Hash::make($pass)]);
     $this->post('/login', [
         'email' => $user->email,
         'password' => $pass,
     ])
-    ->assertRedirect(route('filament.admin.pages.dashboard'));
+        ->assertRedirect(route('filament.admin.pages.dashboard'));
 });
 
 test('admin user can access the dashboard', function () {
-    $user = User::factory()->create(['level'=>1]);
+    $user = User::factory()->create(['level' => 1]);
 
     actingAs($user)->get('/admin')
         ->assertStatus(200);

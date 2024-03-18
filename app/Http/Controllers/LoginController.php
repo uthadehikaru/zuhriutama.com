@@ -28,8 +28,9 @@ class LoginController extends Controller
         if (Auth::attempt($request->only(['email', 'password']), $request->get('remember'))) {
             $request->session()->regenerate();
 
-            if(Auth::user()->is_admin)
+            if (Auth::user()->is_admin) {
                 return to_route('filament.admin.pages.dashboard');
+            }
 
             return redirect(RouteServiceProvider::HOME);
         }
