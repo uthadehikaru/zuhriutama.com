@@ -8,7 +8,9 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class CommentResource extends Resource
 {
@@ -24,9 +26,11 @@ class CommentResource extends Resource
                     ->relationship(name: 'post', titleAttribute: 'title')
                     ->required(),
                 Forms\Components\TextInput::make('name')
+                    ->default(Auth::user()->name)
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
+                    ->default(Auth::user()->email)
                     ->email()
                     ->required()
                     ->maxLength(255),
@@ -68,6 +72,21 @@ class CommentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('reply')
+                    ->color('info')
+                    ->form([
+                        Forms\Components\Textarea::make('message')
+                            ->required(),
+                    ])
+                    ->action(function (array $data, Comment $record): void {
+                        Comment::create([
+                            'post_id' => $record->post_id,
+                            'parent_id' => $record->id,
+                            'message' => $data['message'],
+                            'name' => Auth::user()->name,
+                            'email' => Auth::user()->email,
+                        ]);
+                    })
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
