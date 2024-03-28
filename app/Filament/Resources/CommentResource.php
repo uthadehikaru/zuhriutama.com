@@ -86,7 +86,7 @@ class CommentResource extends Resource
                             'name' => Auth::user()->name,
                             'email' => Auth::user()->email,
                         ]);
-                    })
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

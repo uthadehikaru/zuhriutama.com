@@ -17,7 +17,7 @@ class PostSeeder extends Seeder
             $tags = fake()->words(5);
             $posts = Post::factory(10)->has(Comment::factory(5))->create();
             foreach ($posts as $post) {
-                $post->attachTags(fake()->randomElements($tags, 2));
+                $post->attachTags(fake()->randomElements($tags, 2), 'categories');
             }
         }
     }

@@ -56,8 +56,9 @@ class CommentForm extends Component implements HasForms
     {
         $data = $this->form->getState();
         $data['post_id'] = $this->post_id;
-        if($this->parent_id)
+        if ($this->parent_id) {
             $data['parent_id'] = $this->parent_id;
+        }
         Comment::create($data);
         $this->message = 'Komentar anda telah tersimpan';
         $this->form->fill();

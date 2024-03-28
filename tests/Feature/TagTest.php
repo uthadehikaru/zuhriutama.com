@@ -14,7 +14,7 @@ test('admin can list tags', function () {
 });
 
 test('guest can see post related tags', function () {
-    $tag = Tag::findOrCreateFromString('tags-test');
+    $tag = Tag::findOrCreateFromString('tags-test', 'categories');
     $post = Post::factory()->create();
     $post->attachTag($tag);
     $this->get(route('tags.show', $tag->name))
