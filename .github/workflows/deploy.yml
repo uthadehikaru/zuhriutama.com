@@ -3,7 +3,7 @@ name: Deploy to Server
 on: [push]
 
 jobs:
-  php-code-styling:
+  deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
