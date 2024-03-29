@@ -17,7 +17,7 @@
     @stack('styles')
 
     <!-- Styles -->
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
 <body>
@@ -62,17 +62,41 @@
                 class="hidden rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:inline-block"
                 >Login</a>
             @endauth
-
-            <button type="button"
-                class="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                        clip-rule="evenodd" />
-                </svg>
-
-                Menu
-            </button>
+            <div class="drawe lg:hidden">
+                <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+                <div class="drawer-content justify-end">
+                    <!-- Page content here -->
+                    <label for="my-drawer" class="btn btn-primary drawer-button"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                        clip-rule="evenodd" />
+                                </svg> Menu</label>
+                </div> 
+                <div class="drawer-side">
+                    <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+                    <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                        <li><a href="{{ url('/') }}" @class(["text-lg font-semibold",
+                        "text-gray-500 hover:text-indigo-500" => !Request::is('/*'),
+                        "text-indigo-500" => Request::is('/*'),
+                        ])>Home</a></li>
+                        <li><a href="{{ route('post.index') }}" @class(["text-lg font-semibold",
+                        "text-gray-500 hover:text-indigo-500" => !Request::is('post*'),
+                        "text-indigo-500" => Request::is('post*'),
+                        ])>Artikel</a></li>
+                        @auth
+                        <li><a href="{{ route('logout') }}" @class(["text-lg font-semibold",
+                        "text-gray-500 hover:text-indigo-500" => !Request::is('logout*'),
+                        "text-indigo-500" => Request::is('logout*'),
+                        ])>Keluar</a></li>
+                        @else
+                        <li><a href="{{ route('login') }}" @class(["text-lg font-semibold",
+                        "text-gray-500 hover:text-indigo-500" => !Request::is('login*'),
+                        "text-indigo-500" => Request::is('login*'),
+                        ])>Masuk</a></li>
+                        @endauth
+                    </ul>
+                </div>
+            </div>
             <!-- buttons - end -->
         </header>
     </div>
