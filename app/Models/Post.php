@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Tags\HasTags;
 
-class Post extends Model
+class Post extends Model implements Viewable
 {
     use HasFactory;
     use HasTags;
+    use InteractsWithViews;
 
     protected $casts = [
         'published_at' => 'datetime',

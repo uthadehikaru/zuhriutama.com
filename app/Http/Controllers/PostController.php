@@ -8,7 +8,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $data['latest_posts'] = Post::latest()->published()->paginate(9);
+        $data['latest_posts'] = Post::withCount('comments')->latest()->published()->paginate(9);
 
         return view('post.index', $data);
     }
@@ -18,6 +18,8 @@ class PostController extends Controller
         if (! $post->is_published) {
             return abort(403);
         }
+        views($post)->record();
+        $post->loadCount('comments');
 
         $data['post'] = $post;
 

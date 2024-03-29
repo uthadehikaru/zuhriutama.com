@@ -10,11 +10,23 @@ test('admin can list posts', function () {
     $this->get(PostResource::getUrl('index'))->assertSuccessful();
 });
 
+test('guest can see latest posts', function () {
+    Post::factory(3)->create();
+    $post = Post::take(1)->first();
+    $this->get(route('post.index'))
+        ->assertOk()
+        ->assertViewHas('latest_posts')
+        ->assertSeeInOrder([$post->title, $post->description]);
+});
+
 test('guest can see post detail', function () {
     $post = Post::factory()->create();
     $this->get(route('post.show', $post->slug))
         ->assertOk()
         ->assertSeeInOrder([$post->title, $post->description]);
+
+    $view = views($post)->count();
+    expect($view)->toBe(1);
 });
 
 test('guest can not see unpublished post', function () {

@@ -8,7 +8,7 @@ class Welcome extends Controller
 {
     public function __invoke()
     {
-        $data['latest_posts'] = Post::latest()->published()->take(3)->get();
+        $data['latest_posts'] = Post::withCount('comments')->latest()->published()->take(3)->get();
 
         return view('welcome', $data);
     }

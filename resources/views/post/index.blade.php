@@ -15,7 +15,9 @@
                 <x-post-card :post="$post" />
             @endforeach
         </div>
+        <div class="py-4 flex justify-center">
         {{ $latest_posts->links() }}
+        </div>
     </div>
 </section>
 <!-- end blog -->
