@@ -45,4 +45,9 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     {
         return $this->level == 1;
     }
+
+    public function getAuthPasswordName()
+    {
+        return 'password';
+    }
 }
