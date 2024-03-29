@@ -1,0 +1,25 @@
+name: Deploy to Server
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ${{ secrets.PATH }}
+            php artisan down
+            git pull origin web
+            composer install --no-dev
+            php artisan migrate --force
+            php artisan optimize
+            php artisan up
