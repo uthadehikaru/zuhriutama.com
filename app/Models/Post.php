@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\MarkdownTrait;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +15,7 @@ class Post extends Model implements Viewable
     use HasFactory;
     use HasTags;
     use InteractsWithViews;
+    use MarkdownTrait;
 
     protected $casts = [
         'published_at' => 'datetime',

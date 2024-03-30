@@ -6,6 +6,7 @@ export default {
     "./resources/**/*.js",
     "./resources/**/*.vue",
   ],
+  safelist: ["mockup-code"],
   theme: {
     extend: {},
   },

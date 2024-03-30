@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="parsedown">
-        {!! str($post->content)->markdown() !!}
+        {!! $post->markdown('content') !!}
         </div>
         <div class="flex items-center flex-wrap py-2">
             <span class="text-gray-400 italic mr-3 pr-3 border-r-2 border-gray-200">{{ $post->published_at?->format('d M Y H:i') }}</span>
