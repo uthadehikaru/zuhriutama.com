@@ -11,10 +11,10 @@ trait MarkdownTrait
     public function markdown($column)
     {
         $markdown = new GithubFlavoredMarkdownConverter([
-            'html_input' => 'strip',
+            'html_input' => 'escape',
             'allow_unsafe_links' => false,
         ]);
-        $markdown->getEnvironment()->addRenderer(FencedCode::class, new CodeBlockRenderer());
+        // $markdown->getEnvironment()->addRenderer(FencedCode::class, new CodeBlockRenderer());
 
         return $markdown->convert($this->$column);
     }
