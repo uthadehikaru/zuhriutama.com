@@ -1,6 +1,10 @@
 name: Fix PHP code style issues
 
-on: [push]
+on:
+  workflow_run:
+    workflows: ["Run Tests"]
+    types:
+      - completed
 
 jobs:
   php-code-styling:
