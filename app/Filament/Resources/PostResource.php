@@ -66,13 +66,16 @@ class PostResource extends Resource
                     ->dateTime()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
+                    ->words(3)
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('is_published'),
                 Tables\Columns\SpatieTagsColumn::make('tags')
-                    ->type('categories'),
+                    ->type('categories')
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('comments_count')
                     ->label('Comments')
-                    ->counts('comments'),
+                    ->counts('comments')
+                    ->toggleable(),
             ])
             ->filters([
                 //
@@ -89,7 +92,10 @@ class PostResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->recordUrl(
+                fn (Post $record): string => route('filament.admin.resources.posts.edit', ['record' => $record]),
+            );
     }
 
     public static function getRelations(): array
