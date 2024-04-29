@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -13,9 +14,9 @@ class PostController extends Controller
         return view('post.index', $data);
     }
 
-    public function show(Post $post)
+    public function show(Request $request, Post $post)
     {
-        if (! $post->is_published) {
+        if (! $post->is_published && ! $request->has('preview')) {
             return abort(403);
         }
         views($post)->record();

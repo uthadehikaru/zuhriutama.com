@@ -35,6 +35,14 @@ test('guest can not see unpublished post', function () {
         ->assertStatus(403);
 });
 
+test('it can show preview post', function () {
+    $this->actingAs(User::factory()->create());
+    $post = Post::factory()->create(['is_published' => false]);
+    $this->get(route('post.show', ['post' => $post->slug, 'preview' => true]))
+        ->assertOk()
+        ->assertSee('edit');
+});
+
 test('admin can see edit link on post detail', function () {
     $this->actingAs(User::factory()->create());
     $post = Post::factory()->create();

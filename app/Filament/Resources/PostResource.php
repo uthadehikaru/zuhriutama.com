@@ -82,7 +82,7 @@ class PostResource extends Resource
             ])
             ->actions([
                 Action::make('view')
-                    ->url(fn (Post $record): string => route('post.show', $record->slug))
+                    ->url(fn (Post $record): string => route('post.show', ['post' => $record->slug, 'preview' => true]))
                     ->icon('heroicon-o-eye')
                     ->color('info')
                     ->openUrlInNewTab(),
