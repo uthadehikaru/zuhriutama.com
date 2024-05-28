@@ -36,6 +36,16 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'password' => 'hashed',
     ];
 
+    public function scopeVerified($query)
+    {
+        return $query->whereNotNull('email_verified_at');
+    }
+
+    public function scopeSubscriber($query)
+    {
+        return $query->where('level', 2);
+    }
+
     public function getIsAdminAttribute(): bool
     {
         return $this->level == 1;

@@ -26,7 +26,7 @@ class SubscribeForm extends Component
 
     public function submit()
     {
-        $validated = $this->validate([
+        $this->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
         ]);

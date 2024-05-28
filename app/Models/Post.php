@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Observers\PostObserver;
 use App\Traits\MarkdownTrait;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Tags\HasTags;
 
+#[ObservedBy([PostObserver::class])]
 class Post extends Model implements Viewable
 {
     use HasFactory;
