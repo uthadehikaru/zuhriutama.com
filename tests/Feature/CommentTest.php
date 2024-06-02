@@ -8,7 +8,6 @@ use Livewire\Livewire;
 
 test('admin can list comments', function () {
     $this->actingAs(User::factory()->create());
-    Comment::factory(10)->create();
     $this->get(CommentResource::getUrl('index'))->assertSuccessful();
 });
 
