@@ -3,7 +3,7 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-use function Pest\Laravel\{actingAs};
+use function Pest\Laravel\actingAs;
 
 it('can render login', function () {
     $this->get('/login')
@@ -36,6 +36,7 @@ test('admin login on frontend redirect to dashboard', function () {
 });
 
 test('admin user can access the dashboard', function () {
+    /** @var User $user */
     $user = User::factory()->create(['level' => 1]);
 
     actingAs($user)->get('/admin')
